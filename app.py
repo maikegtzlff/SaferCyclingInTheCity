@@ -388,13 +388,13 @@ app_ui = ui.page_fillable(
             }});
 
             //document.title = "Safer Cycling Dashboard";
-            const setPageTitle = () => {
+            const setPageTitle = () => {{
                 const title = "Safer Cycling Dashboard";
                 document.title = title;
-                if (window.top && window.top.document) {
+                if (window.top && window.top.document) {{
                     window.top.document.title = title;
-                }
-            };
+                }}
+            }};
             setPageTitle();
             document.addEventListener("shiny:connected", setPageTitle);
 
