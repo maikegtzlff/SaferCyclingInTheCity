@@ -1,6 +1,6 @@
 # Safer Cycling In The City
 
-A dashboard visualising cyclists exposure to air pollution across Tāmaki Makaurau Auckland.
+A dashboard visualising cyclists exposure to air pollution across Tāmaki Makaurau Auckland, allowing the user to explore air pollution based on time of day/ route choice. Cycling trips are classified by common routes and can be explored at the trip-level.
 
 This data has been collected with up to three air pollution measurements instruments (Atmotube, P-Trak, Vaisala) and a GPS recorder attached to bikes:
 
@@ -27,15 +27,9 @@ __Vaisala__
 <br>
 <br>
 
-## Dashboard
-The dashboard allows the user to explore air pollution based on time of day/ route choice. Cycling trips are classified by common routes and can be explored at the trip-level.
-
-<br>
-<br>
-
 ## Funding & Licenses
 
-Data collection for this project was supported by the University of Auckland through the Faculty of Science Research Development Fund (RDF) New Staff Grant awarded to Dr Katarzyna Sila-Nowicka in 2022, with additional Departmental Research Development Fund (DRDF) support for supplementary data collection. Dashboard development was supported by the [Kauri Community Trust](https://www.kairuri.org/).
+Data collection for this project was supported by the [https://www.auckland.ac.nz/](https://www.auckland.ac.nz/) through the Faculty of Science Research Development Fund (RDF) New Staff Grant awarded to Dr Katarzyna Sila-Nowicka in 2022, with additional Departmental Research Development Fund (DRDF) support for supplementary data collection. Dashboard development was supported by the [Kauri Community Trust](https://www.kairuri.org/).
 
 * **Code:** Licensed under the [MIT License](LICENSE).
 * **Dataset (`data/`):** Auckland cycling air quality measurements are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
