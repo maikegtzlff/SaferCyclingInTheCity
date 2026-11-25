@@ -113,8 +113,8 @@ SENSOR_META = {
     "tgas_c": ("Gas Sensor Temp", "°C", 1),
 }
 
-# Viridis-inspired 6-stop palette for map sensor values
-VIRIDIS_STOPS = ["#440154", "#414487", "#2a788e", "#22a884", "#7ad151", "#fde725"]
+# 6-stop palette for map sensor values (Single-hue Teal ramp)
+VIRIDIS_STOPS = ["#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"]
 
 # Distinct palette for multi-pollutant time-series lines
 TS_COLORS = ["#0284c7", "#e11d48", "#059669", "#7c3aed", "#d97706", "#0d9488"]
@@ -267,7 +267,7 @@ app_ui = ui.page_fillable(
             }
             .colorbar {
                 height: 10px; border-radius: 4px; margin: 6px 0 4px 0;
-                background: linear-gradient(to right, #440154, #414487, #2a788e, #22a884, #7ad151, #fde725);
+                background: linear-gradient(to right, #a8ddb5, #7bccc4, #4eb3d3, #2b8cbe, #0868ac, #084081);
             }
             .colorbar-labels {
                 display: flex; justify-content: space-between;
@@ -301,7 +301,7 @@ app_ui = ui.page_fillable(
             .subfilter-row .form-group { margin-bottom: 10px; }
             .ufp-qc-box {
                 margin-top: -6px; margin-bottom: 10px; padding: 6px 10px;
-                background: #f8fafc; border-left: 3px solid #2a788e;
+                background: #f8fafc; border-left: 3px solid #0868ac;
                 border-radius: 0 6px 6px 0; font-size: 12.5px;
             }
             .ufp-qc-box .form-group { margin-bottom: 0; }
@@ -313,7 +313,10 @@ app_ui = ui.page_fillable(
     ),
     ui.layout_sidebar(
         ui.sidebar(
-            ui.h4("Safer Cycling in Tāmaki Makaurau Auckland", style="margin-top:0; font-weight:700;"),
+            ui.h4("Mapping Mobile Air Pollution:",
+                  ui.br(),
+                   "Safer Cycling in Tāmaki Makaurau Auckland",
+                    style="margin-top:0; font-weight:700;"),
             
             ui.div(
                 ui.p(
@@ -467,9 +470,10 @@ app_ui = ui.page_fillable(
                     layout: {{ 'visibility': 'none' }},
                     paint: {{
                         'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 2.2, 13, 3.8, 16, 6.5],
-                        'circle-color': '#2a788e',
-                        'circle-opacity': 0.85,
-                        'circle-stroke-width': 0
+                        'circle-color': '#2b8cbe',
+                        'circle-opacity': 0.88,
+                        'circle-stroke-width': 0.5,
+                        'circle-stroke-color': 'rgba(15, 23, 42, 0.18)'
                     }}
                 }});
 
