@@ -204,7 +204,6 @@ def compute_quantile_stops(values: list[float]) -> tuple[list[float], float, flo
 
 app_ui = ui.page_fillable(
     ui.tags.head(
-        ui.tags.title("Safer Cycling Dashboard"),
         ui.tags.link(
             rel="stylesheet",
             href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css",
@@ -704,6 +703,7 @@ app_ui = ui.page_fillable(
             """
         ),
     ),
+    title="Safer Cycling Dashboard",
 )
 
 
