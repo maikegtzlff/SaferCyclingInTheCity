@@ -61,14 +61,14 @@ ROUTE_NAMES = [r for r in PREFERRED_ORDER if r in route_counts] + [
 ]
 
 PALETTE = [
-    "#00b4d8",  # Electric Cyan
-    "#2563eb",  # Cobalt Blue
-    "#059669",  # Emerald Green
-    "#7c3aed",  # Royal Violet
-    "#e11d48",  # Crimson Rose
-    "#0d9488",  # Deep Teal
-    "#4f46e5",  # Indigo
-    "#d97706",  # Amber Gold
+    "#0072B2",  # Deep Blue (City Loop)
+    "#C02638",  # Crimson Red (Mt Eden Loop)
+    "#009E73",  # Bluish Green (Epsom)
+    "#CC79A7",  # Reddish Purple / Magenta (Parnell Loop)
+    "#56B4E9",  # Sky Blue (Tamaki Drive Loop)
+    "#E69F00",  # Warm Orange (Ponsonby Loop)
+    "#334155",  # Dark Charcoal (Orakei Loop)
+    "#4B3B8F",  # Deep Indigo / Violet (Northwestern Cycleway)
 ]
 ROUTE_COLORS = {r: PALETTE[i % len(PALETTE)] for i, r in enumerate(ROUTE_NAMES)}
 
