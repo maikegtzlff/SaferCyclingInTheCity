@@ -376,6 +376,8 @@ app_ui = ui.page_fillable(
                 zoom: 12.2
             }});
 
+            document.title = "Safer Cycling Dashboard";
+
             map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
             let currentSelected = 'ALL';
