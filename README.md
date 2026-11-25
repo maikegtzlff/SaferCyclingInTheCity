@@ -30,8 +30,12 @@ __Vaisala__
 ## Dashboard
 The dashboard allows the user to explore air pollution based on time of day/ route choice. Cycling trips are classified by common routes and can be explored at the trip-level.
 
+## License
+* **Code:** Licensed under the [MIT License](LICENSE).
+* **Dataset (`data/`):** Auckland cycling air quality measurements are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
 ## Data pre-processing
-For data to be displayed on the dashboard, the measurements across the different instruments had to be combined and map-matched. Map-matching is a process that allows us to... Thus, we can investigate air pollution at the road segment level.
+For data to be displayed on the dashboard, the measurements across the different instruments had to be combined and map-matched. Map-matching is a process that allows us to... Thus, we can investigate air pollution at the road segment level. The code and raw data can be made available upon reasonable request for research purposes.
 
 ### (1) Data cleaning
 Data cleaning is required prior to data fusion to ensure no air pollution records are lost. Key quality control measures include:
