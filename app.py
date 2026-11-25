@@ -326,12 +326,19 @@ app_ui = ui.page_fillable(
             ui.hr(style="margin: 12px 0 8px 0;"),
             ui.div(
                 ui.p(
-                    "Data collection supported by the University of Auckland. "
-                    "Dashboard development supported by the ",
-                    ui.a("Kauri Community Trust", href="https://www.kairuri.org/", target="_blank"),
+                    "Data collection supported by the ",
+                    ui.a("University of Auckland", href="https://www.auckland.ac.nz/", target="_blank"),
+                    ". Dashboard development supported by the ",
+                    ui.a("Kairuri Community Trust", href="https://www.kairuri.org/", target="_blank"),
+                    ".",
+                    style="font-size: 11px; color: #64748b; line-height: 1.4; margin-bottom: 6px;",
+                ),
+                ui.p(
+                    "The code and data can be made available upon reasonable request for research purposes. Please contact ",
+                    ui.a("Maike Gatzlaff", href="https://profiles.auckland.ac.nz/maike-gatzlaff", target="_blank"),
                     ".",
                     style="font-size: 11px; color: #64748b; line-height: 1.4; margin-bottom: 0;",
-                )
+                ),
             ),
             width=355,
         ),
