@@ -33,7 +33,10 @@ The dashboard allows the user to explore air pollution based on time of day/ rou
 <br>
 <br>
 
-## License
+## Funding & Licenses
+
+Data collection for this project was supported by the University of Auckland through the Faculty of Science Research Development Fund (RDF) New Staff Grant awarded to Dr Katarzyna Sila-Nowicka in 2022, with additional Departmental Research Development Fund (DRDF) support for supplementary data collection. Dashboard development was supported by the [Kauri Community Trust](https://www.kairuri.org/).
+
 * **Code:** Licensed under the [MIT License](LICENSE).
 * **Dataset (`data/`):** Auckland cycling air quality measurements are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
