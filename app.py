@@ -376,7 +376,16 @@ app_ui = ui.page_fillable(
                 zoom: 12.2
             }});
 
-            document.title = "Safer Cycling Dashboard";
+            //document.title = "Safer Cycling Dashboard";
+            const setPageTitle = () => {
+                const title = "Safer Cycling Dashboard";
+                document.title = title;
+                if (window.top && window.top.document) {
+                    window.top.document.title = title;
+                }
+            };
+            setPageTitle();
+            document.addEventListener("shiny:connected", setPageTitle);
 
             map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
