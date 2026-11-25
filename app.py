@@ -116,9 +116,6 @@ SENSOR_META = {
 # 6-stop palette for map sensor values (Single-hue Teal ramp)
 VIRIDIS_STOPS = ["#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"]
 
-# Distinct palette for multi-pollutant time-series lines
-TS_COLORS = ["#0284c7", "#e11d48", "#059669", "#7c3aed", "#d97706", "#0d9488"]
-
 # In-memory cache so each route .geojson.gz is only decompressed once per session
 _POINTS_CACHE: dict[str, dict] = {}
 
@@ -384,7 +381,7 @@ app_ui = ui.page_fillable(
                             onclick="window.switchInstrumentTab('vaisala')",
                         ),
                         ui.tags.button(
-                            "Atmotube (PM, VOC & Met)",
+                            "Atmotube (PM, VOC & Weather)",
                             id="tab-btn-atmotube",
                             class_="ts-tab-btn",
                             onclick="window.switchInstrumentTab('atmotube')",
@@ -1254,8 +1251,8 @@ def server(input, output, session):
                 tr["marker"] = {"size": 5.5, "color": color, "opacity": 0.9}
             return tr
 
-        # 1. P-Trak Tab (1 continuous line)
-        ptrak_traces = [t for t in [build_trace("pt_conc_pt_cc", "#0284c7", "lines")] if t]
+        # 1. P-Trak Tab (1 continuous line — matches map Teal/Ocean scale)
+        ptrak_traces = [t for t in [build_trace("pt_conc_pt_cc", "#0868ac", "lines")] if t]
         ptrak_layout = {
             "margin": {"l": 65, "r": 25, "t": 12, "b": 38},
             "showlegend": False,
@@ -1266,8 +1263,8 @@ def server(input, output, session):
         # 2. Vaisala Tab (CO2 left axis + Gas Sensor Temp right axis)
         vaisala_traces = [
             t for t in [
-                build_trace("co2_ppm", "#059669", "lines+markers", yaxis="y"),
-                build_trace("tgas_c", "#e11d48", "lines+markers", yaxis="y2"),
+                build_trace("co2_ppm", "#009E73", "lines+markers", yaxis="y"),
+                build_trace("tgas_c", "#D55E00", "lines+markers", yaxis="y2"),
             ] if t
         ]
         vaisala_layout = {
@@ -1275,14 +1272,14 @@ def server(input, output, session):
             "legend": {"orientation": "h", "y": 1.15, "x": 0},
             "xaxis": {"title": {"text": "Elapsed Ride Time (minutes)", "font": {"size": 11.5}}, "gridcolor": "#e2e8f0", "zeroline": False},
             "yaxis": {
-                "title": {"text": "CO₂ (ppm)", "font": {"size": 11.5, "color": "#059669"}},
-                "tickfont": {"color": "#059669"},
+                "title": {"text": "CO₂ (ppm)", "font": {"size": 11.5, "color": "#009E73"}},
+                "tickfont": {"color": "#009E73"},
                 "gridcolor": "#e2e8f0",
                 "zeroline": False,
             },
             "yaxis2": {
-                "title": {"text": "Gas Sensor Temp (°C)", "font": {"size": 11.5, "color": "#e11d48"}},
-                "tickfont": {"color": "#e11d48"},
+                "title": {"text": "Gas Sensor Temp (°C)", "font": {"size": 11.5, "color": "#D55E00"}},
+                "tickfont": {"color": "#D55E00"},
                 "overlaying": "y",
                 "side": "right",
                 "showgrid": False,
@@ -1293,14 +1290,14 @@ def server(input, output, session):
         # 3. Atmotube Tab (2x2 synchronized line+marker subplots sharing Elapsed Ride Time)
         atmo_traces = [
             t for t in [
-                build_trace("pm1_ug_m3", "#0284c7", "lines+markers", yaxis="y", xaxis="x"),
-                build_trace("pm2_5_ug_m3", "#e11d48", "lines+markers", yaxis="y", xaxis="x"),
-                build_trace("pm10_ug_m3", "#7c3aed", "lines+markers", yaxis="y", xaxis="x"),
-                build_trace("voc_ppm", "#d97706", "lines+markers", yaxis="y2", xaxis="x2"),
-                build_trace("aqs", "#059669", "lines+markers", yaxis="y3", xaxis="x2"),
-                build_trace("temperature_c", "#dc2626", "lines+markers", yaxis="y4", xaxis="x3"),
-                build_trace("humidity_pct", "#0d9488", "lines+markers", yaxis="y5", xaxis="x3"),
-                build_trace("pressure_mbar", "#4f46e5", "lines+markers", yaxis="y6", xaxis="x4"),
+                build_trace("pm1_ug_m3", "#56B4E9", "lines+markers", yaxis="y", xaxis="x"),
+                build_trace("pm2_5_ug_m3", "#0072B2", "lines+markers", yaxis="y", xaxis="x"),
+                build_trace("pm10_ug_m3", "#4B3B8F", "lines+markers", yaxis="y", xaxis="x"),
+                build_trace("voc_ppm", "#E69F00", "lines+markers", yaxis="y2", xaxis="x2"),
+                build_trace("aqs", "#334155", "lines+markers", yaxis="y3", xaxis="x2"),
+                build_trace("temperature_c", "#D55E00", "lines+markers", yaxis="y4", xaxis="x3"),
+                build_trace("humidity_pct", "#009E73", "lines+markers", yaxis="y5", xaxis="x3"),
+                build_trace("pressure_mbar", "#CC79A7", "lines+markers", yaxis="y6", xaxis="x4"),
             ] if t
         ]
         atmo_layout = {
@@ -1309,13 +1306,13 @@ def server(input, output, session):
             "xaxis": {"domain": [0.0, 0.44], "anchor": "y", "matches": "x3", "showticklabels": False, "gridcolor": "#e2e8f0"},
             "yaxis": {"domain": [0.56, 1.0], "anchor": "x", "title": {"text": "PM (µg/m³)", "font": {"size": 10.5}}, "gridcolor": "#e2e8f0", "zeroline": False},
             "xaxis2": {"domain": [0.54, 0.94], "anchor": "y2", "matches": "x4", "showticklabels": False, "gridcolor": "#e2e8f0"},
-            "yaxis2": {"domain": [0.56, 1.0], "anchor": "x2", "title": {"text": "VOC (ppm)", "font": {"size": 10.5, "color": "#d97706"}}, "tickfont": {"color": "#d97706"}, "gridcolor": "#e2e8f0", "zeroline": False},
-            "yaxis3": {"domain": [0.56, 1.0], "anchor": "x2", "overlaying": "y2", "side": "right", "title": {"text": "AQS", "font": {"size": 10.5, "color": "#059669"}}, "tickfont": {"color": "#059669"}, "showgrid": False, "zeroline": False},
+            "yaxis2": {"domain": [0.56, 1.0], "anchor": "x2", "title": {"text": "VOC (ppm)", "font": {"size": 10.5, "color": "#E69F00"}}, "tickfont": {"color": "#E69F00"}, "gridcolor": "#e2e8f0", "zeroline": False},
+            "yaxis3": {"domain": [0.56, 1.0], "anchor": "x2", "overlaying": "y2", "side": "right", "title": {"text": "AQS", "font": {"size": 10.5, "color": "#334155"}}, "tickfont": {"color": "#334155"}, "showgrid": False, "zeroline": False},
             "xaxis3": {"domain": [0.0, 0.44], "anchor": "y4", "title": {"text": "Elapsed Time (min)", "font": {"size": 10.5}}, "gridcolor": "#e2e8f0"},
-            "yaxis4": {"domain": [0.0, 0.44], "anchor": "x3", "title": {"text": "Temp (°C)", "font": {"size": 10.5, "color": "#dc2626"}}, "tickfont": {"color": "#dc2626"}, "gridcolor": "#e2e8f0", "zeroline": False},
-            "yaxis5": {"domain": [0.0, 0.44], "anchor": "x3", "overlaying": "y4", "side": "right", "title": {"text": "Humidity (%)", "font": {"size": 10.5, "color": "#0d9488"}}, "tickfont": {"color": "#0d9488"}, "showgrid": False, "zeroline": False},
+            "yaxis4": {"domain": [0.0, 0.44], "anchor": "x3", "title": {"text": "Temp (°C)", "font": {"size": 10.5, "color": "#D55E00"}}, "tickfont": {"color": "#D55E00"}, "gridcolor": "#e2e8f0", "zeroline": False},
+            "yaxis5": {"domain": [0.0, 0.44], "anchor": "x3", "overlaying": "y4", "side": "right", "title": {"text": "Humidity (%)", "font": {"size": 10.5, "color": "#009E73"}}, "tickfont": {"color": "#009E73"}, "showgrid": False, "zeroline": False},
             "xaxis4": {"domain": [0.54, 0.94], "anchor": "y6", "matches": "x3", "title": {"text": "Elapsed Time (min)", "font": {"size": 10.5}}, "gridcolor": "#e2e8f0"},
-            "yaxis6": {"domain": [0.0, 0.44], "anchor": "x4", "title": {"text": "Pressure (mbar)", "font": {"size": 10.5, "color": "#4f46e5"}}, "tickfont": {"color": "#4f46e5"}, "gridcolor": "#e2e8f0", "zeroline": False},
+            "yaxis6": {"domain": [0.0, 0.44], "anchor": "x4", "title": {"text": "Pressure (mbar)", "font": {"size": 10.5, "color": "#CC79A7"}}, "tickfont": {"color": "#CC79A7"}, "gridcolor": "#e2e8f0", "zeroline": False},
         }
 
         await session.send_custom_message(
