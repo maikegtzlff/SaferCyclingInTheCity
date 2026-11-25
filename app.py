@@ -391,6 +391,17 @@ app_ui = ui.page_fillable(
                     class_="ts-header",
                 ),
                 ui.div(id="ride-ts-plot", style="width: 100%; height: 255px;"),
+                ui.div(
+                    "For more information on Atmotube's Air Quality Score (AQS), ",
+                    ui.a(
+                        "click here",
+                        href="https://support.atmotube.com/en/articles/10364364-understanding-atmotube-s-air-quality-score-aqs",
+                        target="_blank",
+                    ),
+                    ".",
+                    id="atmotube-aqs-note",
+                    style="display: none; font-size: 11.5px; color: #64748b; text-align: left; margin-top: 2px; padding-right: 4px;",
+                ),
                 id="ts-drawer-wrapper",
                 class_="ts-drawer",
                 style="display: none;",
@@ -660,6 +671,10 @@ app_ui = ui.page_fillable(
                         btn.classList.toggle('active', t === tabName);
                     }}
                 }});
+                const aqsNote = document.getElementById('atmotube-aqs-note');
+                if (aqsNote) {{
+                    aqsNote.style.display = (tabName === 'atmotube') ? 'block' : 'none';
+                }}
                 renderActiveInstrumentTab(0);
             }};
 
