@@ -316,6 +316,15 @@ app_ui = ui.page_fillable(
             ui.h4("Safer Cycling in Tāmaki Makaurau Auckland", style="margin-top:0; font-weight:700;"),
             ui.p(
                 "Select a cycling route to explore point-level air quality measurements.",
+
+                " For more information on pollutants, see this ",
+                ui.a(
+                    "summary by the WHO",
+                    href="https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
+                    target="_blank",
+                ),
+                ".",
+
                 style="font-size: 12.5px; color: #475569; margin: -2px 0 10px 0;",
             ),
             ui.output_ui("route_selector_ui"),
@@ -788,6 +797,12 @@ def server(input, output, session):
                 ui.span("1. Cycling Routes ", class_="sidebar-section-title"),
                 ui.span("(click to select)", class_="sidebar-section-sub"),
             ),
+
+            ui.p(
+                "Explore cyclists' air pollution exposure based on route choice, season, and time of day.",
+                style="font-size: 12px; color: #64748b; line-height: 1.4; margin: 2px 0 6px 0;",
+            ),
+
             ui.div(all_item, *route_items, style="margin-top: 4px;"),
         )
 
