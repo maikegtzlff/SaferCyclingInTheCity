@@ -41,7 +41,8 @@ The dashboard allows the user to explore air pollution based on time of day/ rou
 <br>
 
 ## Data pre-processing
-For data to be displayed on the dashboard, the measurements across the different instruments had to be combined and map-matched. Map-matching is a process that allows us to... Thus, we can investigate air pollution at the road segment level. The code and raw data can be made available upon reasonable request for research purposes.
+For data to be displayed on the dashboard, the measurements across the different instruments had to be combined and map-matched. Thus, we can investigate air pollution at the road segment level. 
+<br> The code and raw data can be made available upon reasonable request for research purposes.
 
 ### (1) Data cleaning
 Data cleaning is required prior to data fusion to ensure no air pollution records are lost. Key quality control measures include:
