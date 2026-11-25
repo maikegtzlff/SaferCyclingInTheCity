@@ -314,19 +314,26 @@ app_ui = ui.page_fillable(
     ui.layout_sidebar(
         ui.sidebar(
             ui.h4("Safer Cycling in Tāmaki Makaurau Auckland", style="margin-top:0; font-weight:700;"),
-            ui.p(
-                "Select a cycling route to explore point-level air quality measurements.",
-
-                " For more information on pollutants, see this ",
-                ui.a(
-                    "summary by the WHO",
-                    href="https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
-                    target="_blank",
+            
+            ui.div(
+                ui.p(
+                    "This data has been collected with up to three air pollution measurement instruments (Atmotube, P-Trak, Vaisala) and a GPS recorder attached to bikes.",
+                    style="font-size: 12.5px; color: #475569; margin: 0 0 6px 0;",
                 ),
-                ".",
-
-                style="font-size: 12.5px; color: #475569; margin: -2px 0 10px 0;",
+                ui.p(
+                    "Select a cycling route to explore point-level air quality measurements. "
+                    "For more information on pollutants, see this ",
+                    ui.a(
+                        "summary by the WHO",
+                        href="https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/types-of-pollutants",
+                        target="_blank",
+                    ),
+                    ".",
+                    style="font-size: 12.5px; color: #475569; margin: 0;",
+                ),
+                style="margin: -4px 0 8px 0;",
             ),
+
             ui.output_ui("route_selector_ui"),
             ui.hr(style="margin: 10px 0;"),
             ui.output_ui("drilldown_controls_ui"),
