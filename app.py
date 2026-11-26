@@ -305,6 +305,46 @@ app_ui = ui.page_fillable(
             .maplibregl-popup-content {
                 font-family: system-ui, sans-serif; font-size: 12.5px; padding: 8px 12px; line-height: 1.45;
             }
+            details.sidebar-photo {
+                margin: 6px 0 10px 0;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 6px;
+                padding: 5px 8px;
+                font-size: 12px;
+                color: #334155;
+            }
+            details.sidebar-photo summary {
+                cursor: pointer;
+                font-weight: 600;
+                user-select: none;
+            }
+            details.sidebar-photo img {
+                width: 100%;
+                height: auto;
+                border-radius: 4px;
+                margin-top: 6px;
+                display: block;
+            }
+            #mobile-notice {
+                display: none;
+            }
+            @media (max-width: 767px) {
+                .bslib-page-fill {
+                    display: none !important;
+                }
+                #mobile-notice {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    min-height: 100vh;
+                    padding: 24px;
+                    background: #f8fafc;
+                    color: #0f172a;
+                }
+            }
             """
         ),
     ),
@@ -314,14 +354,21 @@ app_ui = ui.page_fillable(
                   ui.br(),
                    "Safer Cycling in Tāmaki Makaurau Auckland",
                     style="margin-top:0; font-weight:700;"),
-            
+
+            ui.tags.details(
+                ui.tags.summary("Datta Collection Setup"),
+                ui.tags.img(src="bike_setup.jpg", alt="Bicycle equipped with air quality sensors"),
+                class_="sidebar-photo",
+                open=True,
+            ),
+
             ui.div(
                 ui.p(
                     "This data has been collected with up to three air pollution measurement instruments (Atmotube, P-Trak, Vaisala) and a GPS recorder attached to bikes.",
                     style="font-size: 12.5px; color: #475569; margin: 0 0 6px 0;",
                 ),
                 ui.p(
-                    "Select a cycling route to explore point-level air quality measurements. "
+                    ui.strong("Select a cycling route to explore point-level air quality measurements. "),
                     "For more information on pollutants, see this ",
                     ui.a(
                         "summary by the WHO",
@@ -1436,4 +1483,4 @@ def server(input, output, session):
         await session.send_custom_message("set_route", "ALL")
 
 
-app = App(app_ui, server)
+app = App(app_ui, server, static_assets=APP_DIR / "www")
