@@ -364,7 +364,7 @@ app_ui = ui.page_fillable(
                     style="margin-top:0; font-weight:700;"),
 
             ui.tags.details(
-                ui.tags.summary("Datta Collection Setup"),
+                ui.tags.summary("Data Collection Setup"),
                 ui.tags.img(src="bike_setup.jpg", alt="Bicycle equipped with air quality sensors"),
                 class_="sidebar-photo",
                 open=True,
