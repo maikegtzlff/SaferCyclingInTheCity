@@ -330,7 +330,7 @@ app_ui = ui.page_fillable(
                 display: none;
             }
             @media (max-width: 767px) {
-                .bslib-page-fill {
+                .bslib-sidebar-layout {
                     display: none !important;
                 }
                 #mobile-notice {
@@ -347,6 +347,14 @@ app_ui = ui.page_fillable(
             }
             """
         ),
+    ),
+    ui.div(
+        ui.h4("Open on a Desktop Browser", style="font-weight: 700; margin-bottom: 8px;"),
+        ui.p(
+            "Mapping Mobile Air Pollution: Safer Cycling in Tāmaki Makaurau Auckland is designed for larger screens. Please open this link on a desktop or laptop browser.",
+            style="font-size: 14px; color: #475569; max-width: 340px; line-height: 1.5; margin: 0;",
+        ),
+        id="mobile-notice",
     ),
     ui.layout_sidebar(
         ui.sidebar(
